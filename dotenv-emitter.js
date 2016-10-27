@@ -10,13 +10,12 @@ function DotEnvEmitter(options) {
 
 DotEnvEmitter.prototype.apply = function(compiler) {
   compiler.plugin('after-emit', (compilation, cb) => {
-    const env = Object.keys(this.env).map(key => {
+    const env = Object.keys(this.env).reduce((res, key) => {
       if (this.env.hasOwnProperty(key)) {
-        return `${key}="${this.env[key]}"`
-      } else {
-        return ''
+        res.push(`${key}="${this.env[key]}"`)
       }
-    }).filter(i => i != '').join('\n')
+      return res
+    }, []).join('\n')
     fs.writeFile(path.resolve(this.root || compiler.outputPath, '.env'), env, {
       mode: 0o644,
       flags: 'w+'
