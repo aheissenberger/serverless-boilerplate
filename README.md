@@ -10,12 +10,12 @@ npm run serve:local
 
 2. Deploy
 ```bash
-npm run deploy -- [--stage <stage>] [--region <region>]
+npm run deploy [-- [--stage <stage>] [--region <region>] ]
 ```
 
 3. Remove
 ```bash
-npm run remove -- [--stage <stage>] [--region <region>]
+npm run remove [-- [--stage <stage>] [--region <region>] ]
 ```
 
 # Configurations
