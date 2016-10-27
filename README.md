@@ -1,6 +1,13 @@
 # serverless-boilerplate
-Serverless boilerplate with webpack, for AWS Lambda and API Gateway
+Serverless boilerplate with webpack and Babel, for AWS Lambda and API Gateway
 ---
+# Features
+
+1. Serverless 1.0
+2. Webpack
+3. Babel 6
+4. Designed for use with AWS Lambda and API Gateway
+
 # Basics
 
 1. Run local dev server:
