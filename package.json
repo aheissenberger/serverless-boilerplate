@@ -1,7 +1,7 @@
 {
-  "name": "serverless-boilerplate",
+  "name": "serverless-webpack-babel-boilerplate",
   "version": "1.0.0",
-  "description": "Serverless boilerplate",
+  "description": "Serverless boilerplate with webpack and Babel",
   "scripts": {
     "deploy": "./node_modules/.bin/sls deploy",
     "remove": "./node_modules/.bin/sls remove",
