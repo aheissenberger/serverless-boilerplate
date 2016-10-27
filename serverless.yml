@@ -1,0 +1,25 @@
+service: serverless-boilerplate
+
+plugins:
+  - serverless-webpack
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+  stage: ${opt:stage, self:custom.stageDefault}
+  credentials: ${self:custom.${self:provider.stage}.credentials}
+
+custom:
+  stageDefault: local
+  webpackDefault: webpack.config.js
+  webpack: ${opt:config, self:custom.webpackDefault}
+  local: ${file(./serverless/local.yml)}
+
+functions:
+  test:
+    handler: handler.testHandler
+    events:
+      - http:
+          path: test/{type}
+          method: get
+          integration: lambda

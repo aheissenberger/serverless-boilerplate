@@ -1,0 +1,24 @@
+machine:
+  node:
+    version: 4.3.2
+
+dependencies:
+  pre:
+    - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+test:
+  override:
+    - echo 'no tests!'
+
+deployment:
+  prod:
+    branch: ^\d+\.\d+-stable$
+    commands:
+      - npm run deploy:prod
+  staging:
+    branch: ^\d+\.\d+-release$
+    commands:
+      - npm run deploy:staging
+  dev:
+    branch: master
+    commands:
+      - npm run deploy:dev

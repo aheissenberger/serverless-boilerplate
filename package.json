@@ -1,0 +1,41 @@
+{
+  "name": "serverless-boilerplate",
+  "version": "1.0.0",
+  "description": "Serverless boilerplate",
+  "main": "handler.js",
+  "scripts": {
+    "deploy": "./node_modules/.bin/sls deploy",
+    "remove": "./node_modules/.bin/sls remove",
+    "serve:local": "./node_modules/.bin/sls webpack serve --config webpack.config.local.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pierresaux/serverless-boilerplate.git"
+  },
+  "keywords": [
+    "serverless",
+    "webpack"
+  ],
+  "author": "Kei-sau CHING",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pierresaux/serverless-boilerplate/issues"
+  },
+  "homepage": "https://github.com/pierresaux/serverless-boilerplate#readme",
+  "devDependencies": {
+    "babel-core": "^6.18.0",
+    "babel-loader": "^6.2.6",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-3": "^6.17.0",
+    "serverless-webpack": "^1.0.0-rc.2",
+    "webpack": "^1.13.3",
+    "webpack-node-externals": "^1.5.4"
+  },
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "cli": "^1.0.1",
+    "dotenv": "^2.0.0",
+    "serverless": "^1.0.3"
+  }
+}
