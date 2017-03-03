@@ -17,6 +17,12 @@ if (stage == null) {
 module.exports = {
   entry: './src/handler.js',
   target: 'node',
+  externals: {
+    "aws-sdk": {
+      commonjs: "aws-sdk",
+      amd: "aws-sdk" 
+    }
+  },
   module: {
     loaders: [
       {
