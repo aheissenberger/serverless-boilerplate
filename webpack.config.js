@@ -38,7 +38,6 @@ module.exports = {
     filename: 'handler.js'
   },
   plugins: [
-    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: { warnings: false }
     }),
