@@ -7,7 +7,11 @@ provider:
   name: aws
   runtime: nodejs4.3
   stage: ${opt:stage, self:custom.stageDefault}
+  region: eu-central-1
   credentials: ${self:custom.${self:provider.stage}.credentials}
+  stackTags:
+      client: XXCLIENT
+      project: XXPROJECT
 
 custom:
   stageDefault: local
@@ -22,4 +26,4 @@ functions:
       - http:
           path: test/{type}
           method: get
-          integration: lambda
+          cors: true

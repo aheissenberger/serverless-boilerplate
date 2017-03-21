@@ -3,8 +3,8 @@ Serverless boilerplate with webpack and Babel, for AWS Lambda and API Gateway
 ---
 # Features
 
-1. Serverless 1.0
-2. Webpack
+1. Serverless 1.9
+2. Webpack 2.x
 3. Babel 6
 4. Designed for use with AWS Lambda and API Gateway
 
@@ -12,17 +12,17 @@ Serverless boilerplate with webpack and Babel, for AWS Lambda and API Gateway
 
 1. Run local dev server:
 ```bash
-npm run serve:local
+yarn serve:local
 ```
 
 2. Deploy
 ```bash
-npm run deploy [-- [--stage <stage>] [--region <region>] ]
+yarn deploy [-- [--stage <stage>] [--region <region>] ]
 ```
 
 3. Remove
 ```bash
-npm run remove [-- [--stage <stage>] [--region <region>] ]
+yarn remove [-- [--stage <stage>] [--region <region>] ]
 ```
 
 # Configurations
@@ -44,3 +44,4 @@ Configurations have two parts - [serverless infrastructure](#serverless-configur
 
 1. Even if you are running local server, you must have a valid serverless infrastructure config file.
 2. The resulting environment variable file will be in the Lambda Function archive as well. So it is safe to use the [dotenv](https://www.npmjs.com/package/dotenv) package.
+3. serverless-webpack does not suport setting headers when used with "server:local" - use this to fix: https://github.com/aheissenberger/serverless-webpack/commit/ec014fa6dd48f4eb81ce566583f7702271f3a937
