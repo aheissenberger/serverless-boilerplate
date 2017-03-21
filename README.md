@@ -22,7 +22,7 @@ yarn deploy [-- [--stage <stage>] [--region <region>] ]
 
 3. Remove
 ```bash
-yarn remove [-- [--stage <stage>] [--region <region>] ]
+yarn run remove [-- [--stage <stage>] [--region <region>] ]
 ```
 
 # Configurations
