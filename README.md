@@ -4,8 +4,10 @@ Serverless boilerplate with webpack and Babel, for AWS Lambda and API Gateway
 # Features
 
 1. Serverless 1.9
+2. AWS Lambda Node 6.10
 2. Webpack 2.x
-3. Babel 6
+3. Babel 6 (optimized transpile to node 6.10)
+4. local Debugging with Sourcemaps
 4. Designed for use with AWS Lambda and API Gateway
 
 # Basics
