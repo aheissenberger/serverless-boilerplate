@@ -17,7 +17,7 @@ if (stage == null) {
 
 module.exports = {
   entry: [
-    'babel-polyfill',
+    //'babel-polyfill',
     './src/handler.js'
   ],
   //devtool: 'source-map',
@@ -36,7 +36,14 @@ module.exports = {
         use: [{
           loader: 'babel-loader' ,
           options: {
-            presets: ['es2015','stage-0'],
+            "presets": [
+              ["env", {
+                  "targets": {
+                    "node": 6.10,
+                  },
+                  "useBuiltIns": true,
+              }],
+            ],
             plugins: [
               "transform-es2015-modules-commonjs",
               "transform-runtime"

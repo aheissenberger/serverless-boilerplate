@@ -3,16 +3,29 @@ const DotEnvEmitter = require('./dotenv-emitter')
 
 module.exports = {
   entry: [
-    'babel-polyfill',
+    //'babel-polyfill',
     './src/handler.js',
   ],
   target: 'node',
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        loaders: [ 'babel-loader' ],
-        exclude: /node_modules/,
+        use: [{
+          loader: 'babel-loader' ,
+          options: {
+            "presets": [
+              ["env", {
+                  "targets": {
+                    "node": "current",
+                  },
+                  "useBuiltIns": true,
+              }],
+            ],
+          }
+        }],
+        
+        exclude: [/node_modules/],
       }
     ]
   },

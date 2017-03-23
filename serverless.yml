@@ -5,7 +5,7 @@ plugins:
 
 provider:
   name: aws
-  runtime: nodejs4.3
+  runtime: nodejs6.10
   stage: ${opt:stage, self:custom.stageDefault}
   region: eu-central-1
   credentials: ${self:custom.${self:provider.stage}.credentials}
