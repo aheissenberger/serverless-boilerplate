@@ -6,7 +6,7 @@ export default class {
   }
   get() {
     return (event, context, cb) => {
-
+      debugger;
       console.log(event);
 
       function resolveAfter2Seconds(x) {

@@ -25,6 +25,28 @@ yarn deploy [-- [--stage <stage>] [--region <region>] ]
 yarn run remove [-- [--stage <stage>] [--region <region>] ]
 ```
 
+4. Invoke local function
+```bash
+yarn invoke <function name>
+```
+this will use event.json - if you need an other event.json, you need to duplicate this call - adding "-p " as a parameter after the function name does not work!!
+
+5. log on AWS
+```bash
+yarn log <function name>
+```
+
+6. DEBUG API Functions
+```bash
+yarn debug:server
+```
+
+7. DEBUG Event Functions
+```bash
+yarn debug:invoke <function name>
+```
+this will use event.json
+
 # Configurations
 Configurations have two parts - [serverless infrastructure](#serverless-configuration) and [execution environment for Lambda](#lambda-environment)
 

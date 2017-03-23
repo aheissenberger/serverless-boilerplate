@@ -17,7 +17,6 @@ if (stage == null) {
 
 module.exports = {
   entry: [
-    //'babel-polyfill',
     './src/handler.js'
   ],
   //devtool: 'source-map',

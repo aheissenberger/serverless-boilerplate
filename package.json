@@ -5,7 +5,11 @@
   "scripts": {
     "deploy": "./node_modules/.bin/sls deploy",
     "remove": "./node_modules/.bin/sls remove",
-    "serve:local": "./node_modules/.bin/sls webpack serve --config webpack.config.local.js"
+    "serve:local": "./node_modules/.bin/sls webpack serve --config webpack.config.local.js",
+    "log": "./node_modules/.bin/sls logs --stage test -t -f ",
+    "invoke": "./node_modules/.bin/serverless webpack invoke --config webpack.config.local.js  -p event.json  --function ",
+    "debug:serve": "node --inspect --debug-brk ./node_modules/.bin/sls webpack serve --config webpack.config.local.js",
+    "debug:invoke": "node --inspect --debug-brk ./node_modules/.bin/sls webpack invoke --config webpack.config.local.js -p event.json  --function "
   },
   "repository": {
     "type": "git",

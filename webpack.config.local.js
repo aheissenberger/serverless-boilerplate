@@ -3,10 +3,10 @@ const DotEnvEmitter = require('./dotenv-emitter')
 
 module.exports = {
   entry: [
-    //'babel-polyfill',
     './src/handler.js',
   ],
   target: 'node',
+  devtool: 'source-map',
   module: {
     rules: [
       {
