@@ -49,6 +49,12 @@ module.exports = {
             ]
           }
         }]
+      },
+      {
+        test: /\.(bin)$/,
+        use: [{
+          loader: 'file-loader' ,
+        }]
       }
     ]
   },

@@ -64,6 +64,11 @@ Configurations have two parts - [serverless infrastructure](#serverless-configur
 1. It contains all the custom environment variables readable by the Lambda Function. I have written a webpack plugin to read them from a Javascript file and then write to a dotenv-compatible environment variable file.
 2. Example environment file is in `./env/local.example.yml`, name your config as `<stage>.yml` and deploy/remove script will know
 
+## usage
+
+# static Assets
+any file with the extention `.bin` and which is refered by an `import filename from "./file.bin"` will be copied to the `build` directory. The final Path and filename is avaiable in the variable `filename`
+
 ## Notes
 
 1. Even if you are running local server, you must have a valid serverless infrastructure config file.
