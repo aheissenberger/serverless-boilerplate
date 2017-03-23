@@ -1,4 +1,5 @@
 const webpack = require('webpack')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const DotEnvEmitter = require('./dotenv-emitter')
 const cli = require('cli')
 
@@ -15,7 +16,11 @@ if (stage == null) {
 }
 
 module.exports = {
-  entry: './src/handler.js',
+  entry: [
+    'babel-polyfill',
+    './src/handler.js'
+  ],
+  //devtool: 'source-map',
   target: 'node',
   externals: {
     "aws-sdk": {
@@ -24,22 +29,32 @@ module.exports = {
     }
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        loaders: [ 'babel' ],
         exclude: /node_modules/,
+        use: [{
+          loader: 'babel-loader' ,
+          options: {
+            presets: ['es2015','stage-0'],
+            plugins: [
+              "transform-es2015-modules-commonjs",
+              "transform-runtime"
+            ]
+          }
+        }]
       }
     ]
   },
   output: {
     libraryTarget: 'commonjs',
-    path: 'build',
+    path: __dirname +'/build',
     filename: 'handler.js'
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: { warnings: false }
+    new UglifyJSPlugin({
+      compress: { warnings: false },
+      //sourceMap: true
     }),
     new DotEnvEmitter({
       env: require(DotEnvEmitter.envfiles(stage))

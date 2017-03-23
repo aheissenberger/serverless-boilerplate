@@ -2,7 +2,10 @@ const nodeExternals = require('webpack-node-externals')
 const DotEnvEmitter = require('./dotenv-emitter')
 
 module.exports = {
-  entry: './src/handler.js',
+  entry: [
+    'babel-polyfill',
+    './src/handler.js',
+  ],
   target: 'node',
   module: {
     loaders: [
@@ -15,7 +18,7 @@ module.exports = {
   },
   output: {
     libraryTarget: 'commonjs',
-    path: 'build',
+    path: __dirname + '/build',
     filename: 'handler.js'
   },
   externals: [ nodeExternals() ],
