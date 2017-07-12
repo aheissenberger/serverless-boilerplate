@@ -1,0 +1,12 @@
+*** node_modules/serverless-webpack/lib/serve.js	2017-07-12 23:21:10.000000000 +0200
+--- node_modules/serverless-webpack/lib/serve.js.fixed	2017-07-12 23:21:12.000000000 +0200
+***************
+*** 122,127 ****
+--- 122,128 ----
+          }
+  
+          if (isLambdaProxyIntegration) {
++           if (resp.headers) res.set(resp.headers);
+            res.status(resp.statusCode || 200).send(resp.body);
+          } else {
+            res.status(200).send(resp);

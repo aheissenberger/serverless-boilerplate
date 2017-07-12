@@ -38,7 +38,7 @@ module.exports = {
             "presets": [
               ["env", {
                   "targets": {
-                    "node": 6.10,
+                    "node": "6.10",
                   },
                   "useBuiltIns": true,
               }],

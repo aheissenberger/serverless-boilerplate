@@ -8,8 +8,9 @@
     "serve:local": "./node_modules/.bin/sls webpack serve --config webpack.config.local.js",
     "log": "./node_modules/.bin/sls logs --stage test -t -f ",
     "invoke": "./node_modules/.bin/serverless webpack invoke --config webpack.config.local.js  -p event.json  --function ",
-    "debug:serve": "node --inspect --debug-brk ./node_modules/.bin/sls webpack serve --config webpack.config.local.js",
-    "debug:invoke": "node --inspect --debug-brk ./node_modules/.bin/sls webpack invoke --config webpack.config.local.js -p event.json  --function "
+    "debug:serve": "node --inspect-brk ./node_modules/.bin/sls webpack serve --config webpack.config.local.js",
+    "debug:invoke": "node --inspect-brk ./node_modules/.bin/sls webpack invoke --config webpack.config.local.js -p event.json  --function ",
+    "debug:jest": "node --inspect-brk ./node_modules/.bin/jest -i --runInBand --env jest-environment-node-debug "
   },
   "repository": {
     "type": "git",
@@ -26,20 +27,22 @@
   },
   "homepage": "https://github.com/pierresaux/serverless-boilerplate#readme",
   "devDependencies": {
-    "aws-sdk": "^2.22.0",
-    "babel-core": "^6.24.0",
+    "aws-sdk": "^2.83.0",
+    "babel-core": "^6.25.0",
     "babel-loader": "^6.4.1",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-polyfill": "^6.23.0",
-    "babel-preset-env": "^1.2.2",
-    "jest": "^19.0.2",
-    "serverless": "^1.9.0",
-    "serverless-webpack": "git+https://github.com/elastic-coders/serverless-webpack.git",
-    "uglify-js": "git://github.com/mishoo/UglifyJS2#harmony",
-    "uglifyjs-webpack-plugin": "^0.3.1",
-    "webpack": "^2.2.1",
-    "webpack-node-externals": "^1.5.4"
+    "babel-preset-env": "^1.6.0",
+    "file-loader": "^0.11.2",
+    "jest": "^20.0.4",
+    "jest-environment-node-debug": "^2.0.0",
+    "serverless": "^1.17.0",
+    "serverless-webpack": "^2.0.0",
+    "uglify-js": "git://github.com/mishoo/UglifyJS2#harmony-v2.8.22",
+    "uglifyjs-webpack-plugin": "^0.4.6",
+    "webpack": "^3.2.0",
+    "webpack-node-externals": "^1.6.0"
   },
   "dependencies": {
     "babel-runtime": "^6.23.0",

@@ -4,11 +4,31 @@ Serverless boilerplate with webpack and Babel, for AWS Lambda and API Gateway
 # Features
 
 1. Serverless 1.9
-2. AWS Lambda Node 6.10
 2. Webpack 2.x
 3. Babel 6 (optimized transpile to node 6.10)
+4. AWS Lambda Node 6.10
 4. local Debugging with Sourcemaps
-4. Designed for use with AWS Lambda and API Gateway
+5. Designed for use with AWS Lambda and API Gateway
+
+# SETUP
+*Needs to be repeated after each yarn upgrade!!*
+
+## Uglifyjs ERROR
+`ERROR in handler.js from UglifyJs Unexpected token: punc ({) [handler.js:706,24]`
+this tells you that the installed version of `uglifyjs-webpack-plugin` is using a uglify which does not support ES6.
+
+*fix the problem by deleting the installed uglify package:*
+```bash
+pushd node_modules/uglifyjs-webpack-plugin/node_modules/ && \
+rm -fr uglify-js && \
+rm .bin/uglifyjs && \
+popd
+```
+
+## serverless-webpack server / missing header
+`patch -p0 -i fix_serverless-webpack.patch`
+
+serverless-webpack does not suport setting headers when used with LambdaProxyIntegration / "server:local" on returning results - use this to fix: https://github.com/aheissenberger/serverless-webpack/commit/ec014fa6dd48f4eb81ce566583f7702271f3a937
 
 # Basics
 
@@ -40,7 +60,7 @@ yarn log <function name>
 
 6. DEBUG API Functions
 ```bash
-yarn debug:server
+yarn debug:serve
 ```
 
 7. DEBUG Event Functions
@@ -48,6 +68,23 @@ yarn debug:server
 yarn debug:invoke <function name>
 ```
 this will use event.json
+
+8. DEBUG Tests
+```bash
+node --inspect-brk ./node_modules/.bin/jest -i --runInBand --env jest-environment-node-debug <XXXX.test.js>
+```
+Wichtig: Voraussetzung `yarn add --dev jest-environment-node-debug`
+
+9. Tests
+```bash
+yarn jest -- <filename>.test.js
+```
+
+10. Coverage
+```bash
+yarn jest -- --coverage
+```
+The HTML Version of the report: /server/coverage/lcov-report/index.html
 
 # Configurations
 Configurations have two parts - [serverless infrastructure](#serverless-configuration) and [execution environment for Lambda](#lambda-environment)
@@ -74,3 +111,5 @@ any file with the extention `.bin` and which is refered by an `import filename f
 1. Even if you are running local server, you must have a valid serverless infrastructure config file.
 2. The resulting environment variable file will be in the Lambda Function archive as well. So it is safe to use the [dotenv](https://www.npmjs.com/package/dotenv) package.
 3. serverless-webpack does not suport setting headers when used with "server:local" - use this to fix: https://github.com/aheissenberger/serverless-webpack/commit/ec014fa6dd48f4eb81ce566583f7702271f3a937
+4. if you get the error `ERROR in handler.js from UglifyJs Unexpected token: punc ({) [handler.js:715,24]` insure that there is no 'uglify-js' folder (`/server/node_modules/uglifyjs-webpack-plugin/node_modules`) in the node_modules of `uglifyjs-webpack-plugin`. This will prevent to use the module `/server/node_modules/uglify-js` which does support compressing ES6!
+
